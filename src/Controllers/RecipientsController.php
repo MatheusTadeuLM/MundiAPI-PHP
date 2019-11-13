@@ -45,14 +45,16 @@ class RecipientsController extends BaseController
     /**
      * Updates recipient metadata
      *
-     * @param string                       $recipientId  Recipient id
-     * @param Models\UpdateMetadataRequest $request      Metadata
+     * @param string                       $recipientId     Recipient id
+     * @param Models\UpdateMetadataRequest $request         Metadata
+     * @param string                       $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateRecipientMetadata(
         $recipientId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -60,7 +62,7 @@ class RecipientsController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'recipient_id' => $recipientId,
+            'recipient_id'    => $recipientId,
             ));
 
         //validate and preprocess url
@@ -70,7 +72,8 @@ class RecipientsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -241,14 +244,16 @@ class RecipientsController extends BaseController
     /**
      * Creates an anticipation
      *
-     * @param string                           $recipientId  Recipient id
-     * @param Models\CreateAnticipationRequest $request      Anticipation data
+     * @param string                           $recipientId     Recipient id
+     * @param Models\CreateAnticipationRequest $request         Anticipation data
+     * @param string                           $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createAnticipation(
         $recipientId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -256,7 +261,7 @@ class RecipientsController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'recipient_id' => $recipientId,
+            'recipient_id'    => $recipientId,
             ));
 
         //validate and preprocess url
@@ -266,7 +271,8 @@ class RecipientsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -512,14 +518,16 @@ class RecipientsController extends BaseController
     /**
      * Updates a recipient
      *
-     * @param string                        $recipientId  Recipient id
-     * @param Models\UpdateRecipientRequest $request      Recipient data
+     * @param string                        $recipientId     Recipient id
+     * @param Models\UpdateRecipientRequest $request         Recipient data
+     * @param string                        $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateRecipient(
         $recipientId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -527,7 +535,7 @@ class RecipientsController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'recipient_id' => $recipientId,
+            'recipient_id'    => $recipientId,
             ));
 
         //validate and preprocess url
@@ -537,7 +545,8 @@ class RecipientsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -574,14 +583,16 @@ class RecipientsController extends BaseController
     /**
      * Updates the default bank account from a recipient
      *
-     * @param string                                   $recipientId  Recipient id
-     * @param Models\UpdateRecipientBankAccountRequest $request      Bank account data
+     * @param string                                   $recipientId     Recipient id
+     * @param Models\UpdateRecipientBankAccountRequest $request         Bank account data
+     * @param string                                   $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateRecipientDefaultBankAccount(
         $recipientId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -589,7 +600,7 @@ class RecipientsController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'recipient_id' => $recipientId,
+            'recipient_id'    => $recipientId,
             ));
 
         //validate and preprocess url
@@ -599,7 +610,8 @@ class RecipientsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -807,14 +819,16 @@ class RecipientsController extends BaseController
     /**
      * Creates a transfer for a recipient
      *
-     * @param string                       $recipientId  Recipient Id
-     * @param Models\CreateTransferRequest $request      Transfer data
+     * @param string                       $recipientId     Recipient Id
+     * @param Models\CreateTransferRequest $request         Transfer data
+     * @param string                       $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createTransfer(
         $recipientId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -822,7 +836,7 @@ class RecipientsController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'recipient_id' => $recipientId,
+            'recipient_id'    => $recipientId,
             ));
 
         //validate and preprocess url
@@ -832,7 +846,8 @@ class RecipientsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -869,16 +884,146 @@ class RecipientsController extends BaseController
     /**
      * Creates a new recipient
      *
-     * @param Models\CreateRecipientRequest $request Recipient data
+     * @param Models\CreateRecipientRequest $request         Recipient data
+     * @param string                        $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createRecipient(
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
         $_queryBuilder = '/recipients';
+
+        //validate and preprocess url
+        $_queryUrl = APIHelper::cleanUrl(Configuration::$BASEURI . $_queryBuilder);
+
+        //prepare headers
+        $_headers = array (
+            'user-agent'    => BaseController::USER_AGENT,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
+        );
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        //set HTTP basic auth parameters
+        Request::auth(Configuration::$basicAuthUserName, Configuration::$basicAuthPassword);
+
+        //call on-before Http callback
+        $_httpRequest = new HttpRequest(HttpMethod::POST, $_headers, $_queryUrl);
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        //and invoke the API call request to fetch the response
+        $response = Request::post($_queryUrl, $_headers, $_bodyJson);
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpContext);
+
+        $mapper = $this->getJsonMapper();
+
+        return $mapper->mapClass($response->body, 'MundiAPILib\\Models\\GetRecipientResponse');
+    }
+
+    /**
+     * @todo Add general description for this endpoint
+     *
+     * @param string                               $recipientId     Recipient Identificator
+     * @param Models\UpdateTransferSettingsRequest $request         TODO: type description here
+     * @param string                               $idempotencyKey  (optional) TODO: type description here
+     * @return mixed response from the API call
+     * @throws APIException Thrown if API call fails
+     */
+    public function updateRecipientTransferSettings(
+        $recipientId,
+        $request,
+        $idempotencyKey = null
+    ) {
+
+        //prepare query string for API call
+        $_queryBuilder = '/recipients/{recipient_id}/transfer-settings';
+
+        //process optional query parameters
+        $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
+            'recipient_id'    => $recipientId,
+            ));
+
+        //validate and preprocess url
+        $_queryUrl = APIHelper::cleanUrl(Configuration::$BASEURI . $_queryBuilder);
+
+        //prepare headers
+        $_headers = array (
+            'user-agent'    => BaseController::USER_AGENT,
+            'Accept'        => 'application/json',
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
+        );
+
+        //json encode body
+        $_bodyJson = Request\Body::Json($request);
+
+        //set HTTP basic auth parameters
+        Request::auth(Configuration::$basicAuthUserName, Configuration::$basicAuthPassword);
+
+        //call on-before Http callback
+        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        //and invoke the API call request to fetch the response
+        $response = Request::patch($_queryUrl, $_headers, $_bodyJson);
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpContext);
+
+        $mapper = $this->getJsonMapper();
+
+        return $mapper->mapClass($response->body, 'MundiAPILib\\Models\\GetRecipientResponse');
+    }
+
+    /**
+     * @todo Add general description for this endpoint
+     *
+     * @param string                       $recipientId  TODO: type description here
+     * @param Models\CreateWithdrawRequest $request      TODO: type description here
+     * @return mixed response from the API call
+     * @throws APIException Thrown if API call fails
+     */
+    public function createWithdraw(
+        $recipientId,
+        $request
+    ) {
+
+        //prepare query string for API call
+        $_queryBuilder = '/recipients/{recipient_id}/withdrawals';
+
+        //process optional query parameters
+        $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
+            'recipient_id' => $recipientId,
+            ));
 
         //validate and preprocess url
         $_queryUrl = APIHelper::cleanUrl(Configuration::$BASEURI . $_queryBuilder);
@@ -918,28 +1063,29 @@ class RecipientsController extends BaseController
 
         $mapper = $this->getJsonMapper();
 
-        return $mapper->mapClass($response->body, 'MundiAPILib\\Models\\GetRecipientResponse');
+        return $mapper->mapClass($response->body, 'MundiAPILib\\Models\\GetWithdrawResponse');
     }
 
     /**
      * @todo Add general description for this endpoint
      *
-     * @param string                               $recipientId  Recipient Identificator
-     * @param Models\UpdateTransferSettingsRequest $request      TODO: type description here
+     * @param string $recipientId   TODO: type description here
+     * @param string $withdrawalId  TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
-    public function updateRecipientTransferSettings(
+    public function getWithdrawById(
         $recipientId,
-        $request
+        $withdrawalId
     ) {
 
         //prepare query string for API call
-        $_queryBuilder = '/recipients/{recipient_id}/transfer-settings';
+        $_queryBuilder = '/recipients/{recipient_id}/withdrawals/{withdrawal_id}';
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'recipient_id' => $recipientId,
+            'recipient_id'  => $recipientId,
+            'withdrawal_id' => $withdrawalId,
             ));
 
         //validate and preprocess url
@@ -948,24 +1094,20 @@ class RecipientsController extends BaseController
         //prepare headers
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
-            'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'Accept'        => 'application/json'
         );
-
-        //json encode body
-        $_bodyJson = Request\Body::Json($request);
 
         //set HTTP basic auth parameters
         Request::auth(Configuration::$basicAuthUserName, Configuration::$basicAuthPassword);
 
         //call on-before Http callback
-        $_httpRequest = new HttpRequest(HttpMethod::PATCH, $_headers, $_queryUrl);
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
         if ($this->getHttpCallBack() != null) {
             $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
         }
 
         //and invoke the API call request to fetch the response
-        $response = Request::patch($_queryUrl, $_headers, $_bodyJson);
+        $response = Request::get($_queryUrl, $_headers);
 
         $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
         $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
@@ -980,6 +1122,81 @@ class RecipientsController extends BaseController
 
         $mapper = $this->getJsonMapper();
 
-        return $mapper->mapClass($response->body, 'MundiAPILib\\Models\\GetRecipientResponse');
+        return $mapper->mapClass($response->body, 'MundiAPILib\\Models\\GetWithdrawResponse');
+    }
+
+    /**
+     * Gets a paginated list of transfers for the recipient
+     *
+     * @param string   $recipientId   TODO: type description here
+     * @param integer  $page          (optional) TODO: type description here
+     * @param integer  $size          (optional) TODO: type description here
+     * @param string   $status        (optional) TODO: type description here
+     * @param DateTime $createdSince  (optional) TODO: type description here
+     * @param DateTime $createdUntil  (optional) TODO: type description here
+     * @return mixed response from the API call
+     * @throws APIException Thrown if API call fails
+     */
+    public function getWithdrawals(
+        $recipientId,
+        $page = null,
+        $size = null,
+        $status = null,
+        $createdSince = null,
+        $createdUntil = null
+    ) {
+
+        //prepare query string for API call
+        $_queryBuilder = '/recipients/{recipient_id}/withdrawals';
+
+        //process optional query parameters
+        $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
+            'recipient_id'  => $recipientId,
+            ));
+
+        //process optional query parameters
+        APIHelper::appendUrlWithQueryParameters($_queryBuilder, array (
+            'page'          => $page,
+            'size'          => $size,
+            'status'        => $status,
+            'created_since' => DateTimeHelper::toRfc3339DateTime($createdSince),
+            'created_until' => DateTimeHelper::toRfc3339DateTime($createdUntil),
+        ));
+
+        //validate and preprocess url
+        $_queryUrl = APIHelper::cleanUrl(Configuration::$BASEURI . $_queryBuilder);
+
+        //prepare headers
+        $_headers = array (
+            'user-agent'    => BaseController::USER_AGENT,
+            'Accept'        => 'application/json'
+        );
+
+        //set HTTP basic auth parameters
+        Request::auth(Configuration::$basicAuthUserName, Configuration::$basicAuthPassword);
+
+        //call on-before Http callback
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        //and invoke the API call request to fetch the response
+        $response = Request::get($_queryUrl, $_headers);
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpContext);
+
+        $mapper = $this->getJsonMapper();
+
+        return $mapper->mapClass($response->body, 'MundiAPILib\\Models\\ListWithdrawals');
     }
 }

@@ -107,12 +107,14 @@ class SubscriptionsController extends BaseController
      * @param string                                  $subscriptionId  The subscription id
      * @param Models\UpdateSubscriptionStartAtRequest $request         Request for updating the subscription start
      *                                                                 date
+     * @param string                                  $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateSubscriptionStartAt(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -130,7 +132,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -169,12 +172,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string                               $subscriptionId  Subscription id
      * @param Models\UpdateSubscriptionCardRequest $request         Request for updating a card
+     * @param string                               $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateSubscriptionCard(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -192,7 +197,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -232,13 +238,15 @@ class SubscriptionsController extends BaseController
      * @param string                               $subscriptionId  Subscription Id
      * @param string                               $itemId          Item id
      * @param Models\UpdateSubscriptionItemRequest $body            Request for updating a subscription item
+     * @param string                               $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateSubscriptionItem(
         $subscriptionId,
         $itemId,
-        $body
+        $body,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -257,7 +265,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -297,13 +306,15 @@ class SubscriptionsController extends BaseController
      * @param string                    $subscriptionId  Subscription Id
      * @param string                    $itemId          Item id
      * @param Models\CreateUsageRequest $body            Request for creating a usage
+     * @param string                    $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createUsage(
         $subscriptionId,
         $itemId,
-        $body
+        $body,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -322,7 +333,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -418,12 +430,14 @@ class SubscriptionsController extends BaseController
      * @param string                                        $subscriptionId  Subscription id
      * @param Models\UpdateSubscriptionPaymentMethodRequest $request         Request for updating the paymentmethod
      *                                                                       from a subscription
+     * @param string                                        $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateSubscriptionPaymentMethod(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -441,7 +455,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -478,12 +493,14 @@ class SubscriptionsController extends BaseController
     /**
      * Creates a new subscription
      *
-     * @param Models\CreateSubscriptionRequest $body Request for creating a subscription
+     * @param Models\CreateSubscriptionRequest $body            Request for creating a subscription
+     * @param string                           $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createSubscription(
-        $body
+        $body,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -496,7 +513,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -535,12 +553,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string                               $subscriptionId  Subscription id
      * @param Models\CreateSubscriptionItemRequest $request         Request for creating a subscription item
+     * @param string                               $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createSubscriptionItem(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -558,7 +578,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -597,12 +618,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string                       $subscriptionId  Subscription id
      * @param Models\CreateDiscountRequest $request         Request for creating a discount
+     * @param string                       $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createDiscount(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -620,7 +643,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -719,12 +743,14 @@ class SubscriptionsController extends BaseController
      * @param string                                        $subscriptionId  TODO: type description here
      * @param Models\UpdateSubscriptionAffiliationIdRequest $request         Request for updating a subscription
      *                                                                       affiliation id
+     * @param string                                        $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateSubscriptionAffiliationId(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -742,7 +768,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -781,12 +808,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string $subscriptionId  Subscription id
      * @param string $itemId          Item id
+     * @param string $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createAnUsage(
         $subscriptionId,
-        $itemId
+        $itemId,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -804,7 +833,8 @@ class SubscriptionsController extends BaseController
         //prepare headers
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
-            'Accept'        => 'application/json'
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
         );
 
         //set HTTP basic auth parameters
@@ -929,12 +959,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string                       $subscriptionId  The subscription id
      * @param Models\UpdateMetadataRequest $request         Request for updating the subscrption metadata
+     * @param string                       $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateSubscriptionMetadata(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -952,7 +984,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -991,12 +1024,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string $subscriptionId       Subscription id
      * @param string $subscriptionItemId   Subscription item id
+     * @param string $idempotencyKey       (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function deleteSubscriptionItem(
         $subscriptionId,
-        $subscriptionItemId
+        $subscriptionItemId,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -1015,7 +1050,8 @@ class SubscriptionsController extends BaseController
         //prepare headers
         $_headers = array (
             'user-agent'         => BaseController::USER_AGENT,
-            'Accept'             => 'application/json'
+            'Accept'             => 'application/json',
+            'idempotency-key'      => $idempotencyKey
         );
 
         //set HTTP basic auth parameters
@@ -1052,13 +1088,15 @@ class SubscriptionsController extends BaseController
      * @param string $subscriptionId  The subscription id
      * @param string $itemId          The subscription item id
      * @param string $usageId         The usage id
+     * @param string $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function deleteUsage(
         $subscriptionId,
         $itemId,
-        $usageId
+        $usageId,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -1078,7 +1116,8 @@ class SubscriptionsController extends BaseController
         //prepare headers
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
-            'Accept'        => 'application/json'
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
         );
 
         //set HTTP basic auth parameters
@@ -1114,12 +1153,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string $subscriptionId  Subscription id
      * @param string $discountId      Discount Id
+     * @param string $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function deleteDiscount(
         $subscriptionId,
-        $discountId
+        $discountId,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -1137,7 +1178,8 @@ class SubscriptionsController extends BaseController
         //prepare headers
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
-            'Accept'        => 'application/json'
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
         );
 
         //set HTTP basic auth parameters
@@ -1173,12 +1215,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string                                 $subscriptionId  Subscription id
      * @param Models\CreateCancelSubscriptionRequest $request         (optional) Request for cancelling a subscription
+     * @param string                                 $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function cancelSubscription(
         $subscriptionId,
-        $request = null
+        $request = null,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -1196,7 +1240,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -1360,12 +1405,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string                        $subscriptionId  Subscription id
      * @param Models\CreateIncrementRequest $request         Request for creating a increment
+     * @param string                        $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createIncrement(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -1383,7 +1430,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -1488,12 +1536,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string $subscriptionId  Subscription id
      * @param string $incrementId     Increment id
+     * @param string $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function deleteIncrement(
         $subscriptionId,
-        $incrementId
+        $incrementId,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -1511,7 +1561,8 @@ class SubscriptionsController extends BaseController
         //prepare headers
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
-            'Accept'        => 'application/json'
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
         );
 
         //set HTTP basic auth parameters
@@ -1781,12 +1832,14 @@ class SubscriptionsController extends BaseController
      *
      * @param string                                  $subscriptionId  Subscription Id
      * @param Models\UpdateSubscriptionDueDaysRequest $request         TODO: type description here
+     * @param string                                  $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateSubscriptionDueDays(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -1804,7 +1857,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -1844,12 +1898,14 @@ class SubscriptionsController extends BaseController
      * @param string                                       $subscriptionId  Subscription Id
      * @param Models\UpdateSubscriptionMinimumPriceRequest $request         Request da requisição com o valor mínimo
      *                                                                      que será configurado
+     * @param string                                       $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateSubscriptionMiniumPrice(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -1867,7 +1923,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -1907,12 +1964,14 @@ class SubscriptionsController extends BaseController
      * @param string                                      $subscriptionId  The subscription id
      * @param Models\UpdateSubscriptionBillingDateRequest $request         Request for updating the subscription
      *                                                                     billing date
+     * @param string                                      $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateSubscriptionBillingDate(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -1930,7 +1989,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -1970,12 +2030,14 @@ class SubscriptionsController extends BaseController
      * @param string                                  $subscriptionId  TODO: type description here
      * @param Models\UpdateCurrentCycleEndDateRequest $request         Request for updating the end date of the current
      *                                                                 signature cycle
+     * @param string                                  $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateLatestPeriodEndAt(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -1993,7 +2055,8 @@ class SubscriptionsController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -2033,12 +2096,14 @@ class SubscriptionsController extends BaseController
      * @param string                                 $subscriptionId  Subscription Id
      * @param Models\UpdateCurrentCycleStatusRequest $request         Request for updating the end date of the
      *                                                                subscription current status
+     * @param string                                 $idempotencyKey  (optional) TODO: type description here
      * @return void response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateCurrentCycleStatus(
         $subscriptionId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -2055,7 +2120,8 @@ class SubscriptionsController extends BaseController
         //prepare headers
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -2214,11 +2280,13 @@ class SubscriptionsController extends BaseController
      * @todo Add general description for this endpoint
      *
      * @param string $subscriptionId  TODO: type description here
+     * @param string $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function renewSubscription(
-        $subscriptionId
+        $subscriptionId,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -2235,7 +2303,8 @@ class SubscriptionsController extends BaseController
         //prepare headers
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
-            'Accept'        => 'application/json'
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
         );
 
         //set HTTP basic auth parameters
@@ -2264,5 +2333,65 @@ class SubscriptionsController extends BaseController
         $mapper = $this->getJsonMapper();
 
         return $mapper->mapClass($response->body, 'MundiAPILib\\Models\\GetPeriodResponse');
+    }
+
+    /**
+     * @todo Add general description for this endpoint
+     *
+     * @param string $subscriptionId  The subscription Id
+     * @param string $periodId        The period Id
+     * @return mixed response from the API call
+     * @throws APIException Thrown if API call fails
+     */
+    public function getUsageReport(
+        $subscriptionId,
+        $periodId
+    ) {
+
+        //prepare query string for API call
+        $_queryBuilder = 
+            '/subscriptions/{subscription_id}/periods/{period_id}/usages/report';
+
+        //process optional query parameters
+        $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
+            'subscription_id' => $subscriptionId,
+            'period_id'       => $periodId,
+            ));
+
+        //validate and preprocess url
+        $_queryUrl = APIHelper::cleanUrl(Configuration::$BASEURI . $_queryBuilder);
+
+        //prepare headers
+        $_headers = array (
+            'user-agent'    => BaseController::USER_AGENT,
+            'Accept'        => 'application/json'
+        );
+
+        //set HTTP basic auth parameters
+        Request::auth(Configuration::$basicAuthUserName, Configuration::$basicAuthPassword);
+
+        //call on-before Http callback
+        $_httpRequest = new HttpRequest(HttpMethod::GET, $_headers, $_queryUrl);
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnBeforeRequest($_httpRequest);
+        }
+
+        //and invoke the API call request to fetch the response
+        $response = Request::get($_queryUrl, $_headers);
+
+        $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
+        $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
+
+        //call on-after Http callback
+        if ($this->getHttpCallBack() != null) {
+            $this->getHttpCallBack()->callOnAfterRequest($_httpContext);
+        }
+
+        //handle errors defined at the API level
+        $this->validateResponse($_httpResponse, $_httpContext);
+
+        $mapper = $this->getJsonMapper();
+
+        return $mapper->mapClass($response->body, 'MundiAPILib\\Models\\GetUsageReportResponse');
     }
 }

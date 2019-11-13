@@ -101,12 +101,14 @@ class OrdersController extends BaseController
     /**
      * Creates a new Order
      *
-     * @param Models\CreateOrderRequest $body Request for creating an order
+     * @param Models\CreateOrderRequest $body            Request for creating an order
+     * @param string                    $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createOrder(
-        $body
+        $body,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -119,7 +121,8 @@ class OrdersController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -230,14 +233,16 @@ class OrdersController extends BaseController
     /**
      * Updates the metadata from an order
      *
-     * @param string                       $orderId  The order id
-     * @param Models\UpdateMetadataRequest $request  Request for updating the order metadata
+     * @param string                       $orderId         The order id
+     * @param Models\UpdateMetadataRequest $request         Request for updating the order metadata
+     * @param string                       $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateOrderMetadata(
         $orderId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -245,7 +250,7 @@ class OrdersController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'order_id' => $orderId,
+            'order_id'        => $orderId,
             ));
 
         //validate and preprocess url
@@ -255,7 +260,8 @@ class OrdersController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -292,12 +298,14 @@ class OrdersController extends BaseController
     /**
      * @todo Add general description for this endpoint
      *
-     * @param string $orderId Order Id
+     * @param string $orderId         Order Id
+     * @param string $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function deleteAllOrderItems(
-        $orderId
+        $orderId,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -305,7 +313,7 @@ class OrdersController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'orderId' => $orderId,
+            'orderId'         => $orderId,
             ));
 
         //validate and preprocess url
@@ -314,7 +322,8 @@ class OrdersController extends BaseController
         //prepare headers
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
-            'Accept'        => 'application/json'
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
         );
 
         //set HTTP basic auth parameters
@@ -348,16 +357,18 @@ class OrdersController extends BaseController
     /**
      * @todo Add general description for this endpoint
      *
-     * @param string                        $orderId Order Id
-     * @param string                        $itemId  Item Id
-     * @param Models\UpdateOrderItemRequest $request Item Model
+     * @param string                        $orderId         Order Id
+     * @param string                        $itemId          Item Id
+     * @param Models\UpdateOrderItemRequest $request         Item Model
+     * @param string                        $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateOrderItem(
         $orderId,
         $itemId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -365,8 +376,8 @@ class OrdersController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'orderId' => $orderId,
-            'itemId'  => $itemId,
+            'orderId'         => $orderId,
+            'itemId'          => $itemId,
             ));
 
         //validate and preprocess url
@@ -376,7 +387,8 @@ class OrdersController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -413,14 +425,16 @@ class OrdersController extends BaseController
     /**
      * @todo Add general description for this endpoint
      *
-     * @param string $orderId Order Id
-     * @param string $itemId  Item Id
+     * @param string $orderId         Order Id
+     * @param string $itemId          Item Id
+     * @param string $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function deleteOrderItem(
         $orderId,
-        $itemId
+        $itemId,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -428,8 +442,8 @@ class OrdersController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'orderId' => $orderId,
-            'itemId'  => $itemId,
+            'orderId'         => $orderId,
+            'itemId'          => $itemId,
             ));
 
         //validate and preprocess url
@@ -438,7 +452,8 @@ class OrdersController extends BaseController
         //prepare headers
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
-            'Accept'        => 'application/json'
+            'Accept'        => 'application/json',
+            'idempotency-key' => $idempotencyKey
         );
 
         //set HTTP basic auth parameters
@@ -472,14 +487,16 @@ class OrdersController extends BaseController
     /**
      * @todo Add general description for this endpoint
      *
-     * @param string                        $orderId Order Id
-     * @param Models\CreateOrderItemRequest $request Order Item Model
+     * @param string                        $orderId         Order Id
+     * @param Models\CreateOrderItemRequest $request         Order Item Model
+     * @param string                        $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function createOrderItem(
         $orderId,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -487,7 +504,7 @@ class OrdersController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'orderId' => $orderId,
+            'orderId'         => $orderId,
             ));
 
         //validate and preprocess url
@@ -497,7 +514,8 @@ class OrdersController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
@@ -593,14 +611,16 @@ class OrdersController extends BaseController
     /**
      * @todo Add general description for this endpoint
      *
-     * @param string                          $id      Order Id
-     * @param Models\UpdateOrderStatusRequest $request Update Order Model
+     * @param string                          $id              Order Id
+     * @param Models\UpdateOrderStatusRequest $request         Update Order Model
+     * @param string                          $idempotencyKey  (optional) TODO: type description here
      * @return mixed response from the API call
      * @throws APIException Thrown if API call fails
      */
     public function updateOrderStatus(
         $id,
-        $request
+        $request,
+        $idempotencyKey = null
     ) {
 
         //prepare query string for API call
@@ -608,7 +628,7 @@ class OrdersController extends BaseController
 
         //process optional query parameters
         $_queryBuilder = APIHelper::appendUrlWithTemplateParameters($_queryBuilder, array (
-            'id'      => $id,
+            'id'              => $id,
             ));
 
         //validate and preprocess url
@@ -618,7 +638,8 @@ class OrdersController extends BaseController
         $_headers = array (
             'user-agent'    => BaseController::USER_AGENT,
             'Accept'        => 'application/json',
-            'content-type'  => 'application/json; charset=utf-8'
+            'content-type'  => 'application/json; charset=utf-8',
+            'idempotency-key' => $idempotencyKey
         );
 
         //json encode body
