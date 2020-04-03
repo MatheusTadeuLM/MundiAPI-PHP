@@ -98,9 +98,8 @@ class CreateCardRequest implements JsonSerializable
 
     /**
      * Document number for the card's holder
-     * @required
      * @maps holder_document
-     * @var string $holderDocument public property
+     * @var string|null $holderDocument public property
      */
     public $holderDocument;
 
@@ -111,6 +110,25 @@ class CreateCardRequest implements JsonSerializable
      * @var bool $privateLabel public property
      */
     public $privateLabel;
+
+    /**
+     * @todo Write general description for this property
+     * @required
+     * @var string $label public property
+     */
+    public $label;
+
+    /**
+     * Identifier
+     * @var string|null $id public property
+     */
+    public $id;
+
+    /**
+     * token identifier
+     * @var string|null $token public property
+     */
+    public $token;
 
     /**
      * Constructor to set initial or default values of member properties
@@ -127,11 +145,14 @@ class CreateCardRequest implements JsonSerializable
      * @param CreateCardOptionsRequest $options          Initialization value for $this->options
      * @param string                   $holderDocument   Initialization value for $this->holderDocument
      * @param bool                     $privateLabel     Initialization value for $this->privateLabel
+     * @param string                   $label            Initialization value for $this->label
+     * @param string                   $id               Initialization value for $this->id
+     * @param string                   $token            Initialization value for $this->token
      */
     public function __construct()
     {
         switch (func_num_args()) {
-            case 13:
+            case 16:
                 $this->number           = func_get_arg(0);
                 $this->holderName       = func_get_arg(1);
                 $this->expMonth         = func_get_arg(2);
@@ -145,6 +166,9 @@ class CreateCardRequest implements JsonSerializable
                 $this->options          = func_get_arg(10);
                 $this->holderDocument   = func_get_arg(11);
                 $this->privateLabel     = func_get_arg(12);
+                $this->label            = func_get_arg(13);
+                $this->id               = func_get_arg(14);
+                $this->token            = func_get_arg(15);
                 break;
 
             default:
@@ -173,6 +197,9 @@ class CreateCardRequest implements JsonSerializable
         $json['options']            = $this->options;
         $json['holder_document']    = $this->holderDocument;
         $json['private_label']      = $this->privateLabel;
+        $json['label']              = $this->label;
+        $json['id']                 = $this->id;
+        $json['token']              = $this->token;
 
         return $json;
     }
