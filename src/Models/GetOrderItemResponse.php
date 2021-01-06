@@ -17,7 +17,6 @@ class GetOrderItemResponse implements JsonSerializable
     /**
      * Id
      * @required
-     * @maps Id
      * @var string $id public property
      */
     public $id;
@@ -94,7 +93,7 @@ class GetOrderItemResponse implements JsonSerializable
     public function jsonSerialize()
     {
         $json = array();
-        $json['Id']                = $this->id;
+        $json['id']                = $this->id;
         $json['amount']            = $this->amount;
         $json['description']       = $this->description;
         $json['quantity']          = $this->quantity;
