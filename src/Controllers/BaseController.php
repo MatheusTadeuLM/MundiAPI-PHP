@@ -95,4 +95,15 @@ class BaseController
             throw new APIException('HTTP Response Not OK', $_httpContext);
         }
     }
+
+    public static function setProxy($proxy)
+    {
+        $username = $proxy['username'];
+        $password = $proxy['password'];
+        $host = $proxy['host'];
+        $port = $proxy['port'];
+
+        Request::proxy($host, $port);
+        Request::proxyAuth($username, $password);
+    }
 }

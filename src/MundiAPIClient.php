@@ -8,6 +8,7 @@
 namespace MundiAPILib;
 
 use MundiAPILib\Controllers;
+use MundiAPILib\Controllers\BaseController;
 
 /**
  * MundiAPILib client class
@@ -19,10 +20,15 @@ class MundiAPIClient
      */
     public function __construct(
         $basicAuthUserName = null,
-        $basicAuthPassword = null
+        $basicAuthPassword = null,
+        $proxy = null
     ) {
         Configuration::$basicAuthUserName = $basicAuthUserName ? $basicAuthUserName : Configuration::$basicAuthUserName;
         Configuration::$basicAuthPassword = $basicAuthPassword ? $basicAuthPassword : Configuration::$basicAuthPassword;
+
+        if (!is_null($proxy)) {
+            BaseController::setProxy($proxy);
+        }
     }
     /**
      * Singleton access to Customers controller
