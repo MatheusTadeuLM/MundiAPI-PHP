@@ -98,8 +98,8 @@ class BaseController
 
     public static function setProxy($proxy)
     {
-        $username = $proxy['username'];
-        $password = $proxy['password'];
+        $username = $proxy['user'];
+        $password = $proxy['pass'];
         $host = $proxy['host'];
         $port = $proxy['port'];
 
